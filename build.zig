@@ -8,7 +8,7 @@ const print = std.debug.print;
 // When changing this version, be sure to also update README.md in two places:
 //     1) Getting Started
 //     2) Version Changes
-const needed_version = std.SemanticVersion.parse("0.10.0-dev.1427") catch unreachable;
+// const needed_version = std.SemanticVersion.parse("0.10.0-dev.1427") catch unreachable;
 
 const Exercise = struct {
     /// main_file must have the format key_name.zig.
@@ -456,9 +456,11 @@ fn checkVersion() bool {
         return false;
     }
 
-    const version = builtin.zig_version;
-    const order = version.order(needed_version);
-    return order != .lt;
+    //const version = builtin.zig_version;
+    //const order = version.order(needed_version);
+    //return order != .lt;
+
+    return true;
 }
 
 pub fn build(b: *Builder) void {
@@ -477,14 +479,14 @@ pub fn build(b: *Builder) void {
             \\
             \\Ziglings requires development build
             \\
-            \\    {}
+            \\    
             \\
             \\or higher. Please download a development ("master") build from
             \\
             \\    https://ziglang.org/download/
             \\
             \\
-        , .{needed_version});
+        , .{});
         std.os.exit(0);
     }
 
